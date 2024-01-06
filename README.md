@@ -43,6 +43,8 @@ metadata of each file.  This script is much slower (processing about four files 
 used in the op script could not reliably read the metadata on many of the video files I was working with when these files were 
 created. 
 
+**The `movefiles` and `movemovies` scripts are not intended to be called by the user.**
+
 ## Fine-tuning
 To add additional filetypes to either script, simply copy and paste one of the `if..fi` blocks in the `op` or `om` files, and
 replace the filetype with the one desired. 
