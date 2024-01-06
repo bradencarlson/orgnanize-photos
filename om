@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Usage: op yearstart yearend
+
+
+# make all directories
+
+for num in $(seq $1 $2); do
+	mkdir $num/
+ 
+	mkdir $num/January
+	mkdir $num/February
+	mkdir $num/March
+	mkdir $num/April
+	mkdir $num/May
+	mkdir $num/June
+	mkdir $num/July
+	mkdir $num/August
+	mkdir $num/September
+	mkdir $num/October
+	mkdir $num/November
+	mkdir $num/December
+done
+
+jpegs=$(ls *.mov)
+if [ -z "$jpegs" ]; then 
+	echo "no mov files found"
+else
+		movemovies "mov" $1 $2
+fi
+
+jpegs=$(ls *.MOV)
+if [ -z "$jpegs" ]; then 
+	echo "no MOV files found"
+else
+	movemovies "MOV" $1 $2
+fi
+
+jpegs=$(ls *.mp4)
+if [ -z "$jpegs" ]; then 
+	echo "no mp4 files found"
+else
+	movemovies "mp4" $1 $2
+fi
+
+jpegs=$(ls *.MP4)
+if [ -z "$jpegs" ]; then 
+	echo "no MP4 files found"
+else
+	movemovies "MP4" $1 $2
+fi
+

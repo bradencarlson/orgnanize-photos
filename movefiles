@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Usage: movefiles JPEG|JPG|... yearstart yearend 
+
+files=$(ls *.$1)
+
+for file in $files
+	do
+		metadata=$(exiv2 "$file" | grep timestamp);
+		if [ -z "$metadata" ]; then 
+			echo " $file metadata empty"
+		else
+			time=$(echo $metadata | sed -E 's/Image timestamp ://')
+			edit=$(echo $time | sed -E 's/://g')
+			date=$(echo $edit | sed -E 's/(.*) (.*)/\1/')
+			year=$(echo ${date:0:4})
+			month=$(echo ${date:4:2})
+			
+			echo $file taken $date
+
+			if [ -z "$year" ]; then 
+				echo "$file date empty"
+			else
+				if [ "$year" -ge "$2" -a "$year" -le "$3" ]; then
+					if [ "$month" -eq 1 ]; then 
+						echo "Moving $file to $year/January"
+						mv $file $year/January/
+					fi
+					if [ "$month" -eq 2 ]; then 
+						echo "Moving $file to $year/February"
+						mv $file $year/February/
+					fi
+					if [ "$month" -eq 3 ]; then 
+						echo "Moving $file to $year/March"
+						mv $file $year/March/
+					fi
+					if [ "$month" -eq 4 ]; then 
+						echo "Moving $file to $year/April"
+						mv $file $year/April/
+					fi
+					if [ "$month" -eq 5 ]; then 
+						echo "Moving $file to $year/May"
+						mv $file $year/May/
+					fi
+					if [ "$month" -eq 6 ]; then 
+						echo "Moving $file to $year/June"
+						mv $file $year/June/
+					fi
+					if [ "$month" -eq 7 ]; then 
+						echo "Moving $file to $year/July"
+						mv $file $year/July/
+					fi
+					if [ "$month" -eq 8 ]; then 
+						echo "Moving $file to $year/August"
+						mv $file $year/August/
+					fi
+					if [ "$month" -eq 9 ]; then 
+						echo "Moving $file to $year/September"
+						mv $file $year/September/
+					fi
+					if [ "$month" -eq 10 ]; then 
+						echo "Moving $file to $year/October"
+						mv $file $year/October/
+					fi
+					if [ "$month" -eq 11 ]; then 
+						echo "Moving $file to $year/November"
+						mv $file $year/November/
+					fi
+					if [ "$month" -eq 12 ]; then 
+						echo "Moving $file to $year/December"
+						mv $file $year/December/
+					fi
+				fi
+			fi
+		fi
+done
+
+
+
